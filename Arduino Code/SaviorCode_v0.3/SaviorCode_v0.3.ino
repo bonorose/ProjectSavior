@@ -27,6 +27,10 @@ const int rs = 12, en = 11, d4 = 5, d5 = 4, d6 = 3, d7 = 2;
 
 
 //--------------------Variable Definition
+/**
+Need to divide by 4 because analog inputs range from 0 to 1023 and each byte of the EEPROM can only hold a value from 0 to 255.
+**/
+
 float OpticalReading = 0;
 float OpticalMax = 0;
 float OpticalMin = 0;
@@ -119,11 +123,19 @@ void MenuInit()
   }
 }
 
-//--------------------Menu Initialization
+
+//--------------------EEPROM Check
+void MemoryCheck()
+{
+  
+}
+
+//--------------------EEPROM Storage
 void MemoryStore(float A, float B) //must adjust if amount of inputs are changes
 {
   
 }
+
 
 
 //--------------------Pin and Variable Initilization
