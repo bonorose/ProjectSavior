@@ -88,24 +88,35 @@ void ResistanceNormalize()
 //--------------------Menu Initialization
 void MenuInit()
 {
-int counter = 0;  
-//----Initialize the variable of type LiquidCrystal with 16 columbs and 2 rows (a 16x2 display)  
-Display.begin(16,2);
+  int counter = 0; //
+  int tester = 0; // for determining if there is something in the EEPROM
+  
+  //----Initialize the variable of type LiquidCrystal with 16 columbs and 2 rows (a 16x2 display)  
+  Display.begin(16,2);
 
-//----Cleans display and positions cursor at (0,0) (top-left corner)
-Display.clear();
+  //----Cleans display and positions cursor at (0,0) (top-left corner)
+  Display.clear();
 
-//----Boot
-Display.print("Welcome to"); //start writing at location 0,0
-Display.setCursor(0,1); //after writing the first line move cursor to 0,1 (lower row)
-Display.print("Salutare vultus");
-delay(200);
+  //----Boot
+  Display.print("Welcome to"); //start writing at location 0,0
+  Display.setCursor(0,1); //after writing the first line move cursor to 0,1 (lower row)
+  Display.print("Salutare vultus");
+  delay(200);
 
-//----EEPROM Memory Check
-Display.clear(); //clean and reset to 0,0
-Display.print("Memory Check");
-Display.setCursor(0,1);
+  //----EEPROM Memory Check
+  Display.clear(); //clean and reset to 0,0
+  Display.print("Memory Check:");
+  Display.setCursor(0,1);
 
+  if (tester == 1)
+  {
+    Display.print("Check Complete");
+  }
+  
+  else
+  {
+    Display.print("Check Failed");
+  }
 }
 
 //--------------------Menu Initialization
