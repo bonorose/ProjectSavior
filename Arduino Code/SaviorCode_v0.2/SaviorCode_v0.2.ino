@@ -1,3 +1,6 @@
+//--------------------Libraries
+#include <LiquidCrystal.h>
+
 //--------------------Pin Definition
 
 //----Analog
@@ -11,7 +14,16 @@
 #define TestBtn 9
 #define ControlBtn 10
 
-//----Dispalay Pins
+//----Display Pins
+//#define RS 12 - Register Select Pin, used to determine where we are writing in the LCD memory: 
+//data register which is diplayed on screen OR instruction register which says what to do next
+//#define EN 11 - Enable Pin allowing registry writing
+//#define D4 5 \
+//#define D5 4  - Data pins for writing/reading information from the LCD
+//#define D6 3  /
+//#define D7 2 /
+const int rs = 12, en = 11, d4 = 5, d5 = 4, d6 = 3, d7 = 2;
+
 
 //--------------------Variable Definition
 float OpticalReading = 0;
@@ -21,6 +33,8 @@ float OpticalMin = 0;
 float ResistanceReading = 0;
 float ResistanceMax = 0;
 float ResistanceMin = 0;
+
+LiquidCrystal Display(rs, en, d4, d5, d6, d7);
 
 //--------------------Analog Optical Measurement
 void OpticalReading()
@@ -71,7 +85,21 @@ void ResistanceNormalize()
 //--------------------Menu Initialization
 void MenuInit()
 {
-  
+int counter = 0;  
+//----Initialize the variable of type LiquidCrystal with 16 columbs and 2 rows (a 16x2 display)  
+Display.begin(16,2);
+
+//----Cleans display and positions cursor at (0,0) (top-left corner)
+Display.clear();
+
+//----Boot
+Display.print("Welcome to"); //start writing at location 0,0
+Display.setCursor(0,1); //after writing the first line move cursor to 0,1 (lower row)
+Display.print("Salutare vultus");
+delay(200);
+
+//----EEPROM Memory Check
+
 }
 
 
